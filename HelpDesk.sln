@@ -3,12 +3,56 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{14C15819-8661-4D44-8F18-F2EB36D1A078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD.Domain", "src\HD.Domain\HD.Domain.csproj", "{CEE9D9CF-6E55-467F-B5A8-01E44406E8B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD.Infra", "src\HD.Infra\HD.Infra.csproj", "{50397053-E4AC-460D-8B40-642B90B2469F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionsItems", "SolutionsItems", "{B5191B2D-FD66-4896-9EB4-5BC607AF0E28}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{039E19DE-4B11-4DD1-821A-14BA3F20B7A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{0082BFA0-9B73-4314-988A-CA610EF0F415}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD.Api", "src\HD.Api\HD.Api.csproj", "{59DBC371-731A-4188-B257-18B2C62E0283}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEE9D9CF-6E55-467F-B5A8-01E44406E8B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE9D9CF-6E55-467F-B5A8-01E44406E8B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE9D9CF-6E55-467F-B5A8-01E44406E8B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE9D9CF-6E55-467F-B5A8-01E44406E8B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50397053-E4AC-460D-8B40-642B90B2469F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50397053-E4AC-460D-8B40-642B90B2469F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50397053-E4AC-460D-8B40-642B90B2469F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50397053-E4AC-460D-8B40-642B90B2469F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59DBC371-731A-4188-B257-18B2C62E0283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DBC371-731A-4188-B257-18B2C62E0283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DBC371-731A-4188-B257-18B2C62E0283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DBC371-731A-4188-B257-18B2C62E0283}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CEE9D9CF-6E55-467F-B5A8-01E44406E8B9} = {14C15819-8661-4D44-8F18-F2EB36D1A078}
+		{50397053-E4AC-460D-8B40-642B90B2469F} = {14C15819-8661-4D44-8F18-F2EB36D1A078}
+		{039E19DE-4B11-4DD1-821A-14BA3F20B7A8} = {B5191B2D-FD66-4896-9EB4-5BC607AF0E28}
+		{0082BFA0-9B73-4314-988A-CA610EF0F415} = {039E19DE-4B11-4DD1-821A-14BA3F20B7A8}
+		{59DBC371-731A-4188-B257-18B2C62E0283} = {14C15819-8661-4D44-8F18-F2EB36D1A078}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E91DA9B-1A54-41A8-892D-3D3775C96CB8}
 	EndGlobalSection
 EndGlobal

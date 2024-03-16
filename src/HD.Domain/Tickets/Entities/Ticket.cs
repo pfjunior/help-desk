@@ -7,7 +7,7 @@ namespace HD.Domain.Tickets.Entities;
 
 public class Ticket : Entity
 {
-    protected Ticket() => _comments = new List<Comment>();
+    public Ticket() => _comments = new List<Comment>();
 
     public Ticket(string title, string description, Type type)
     {

@@ -6,6 +6,5 @@ namespace HD.Domain.Departments.Interfaces;
 public interface IDepartmentRepository : IRepository<Department>
 {
     Task<Department> GetByCode(string code);
-    Task<IEnumerable<Department>> GetClientByDepartmentCode(string code);
-    Task<IEnumerable<Department>> GetDepartmentsClient();
+    Task<IEnumerable<Department>> GetDepartmentsUsers();
 }

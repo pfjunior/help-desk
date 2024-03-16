@@ -17,11 +17,11 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         DbSet = context.Set<TEntity>();
     }
 
-    public virtual async Task<List<TEntity>> GetAll() => await DbSet.ToListAsync();
-
     public virtual async Task<TEntity> GetById(Guid id) => await DbSet.FindAsync(id);
 
-    public async Task<IEnumerable<TEntity>> Search(Expression<Func<TEntity, bool>> predicate) => await DbSet.AsNoTracking().Where(predicate).ToListAsync();
+    public virtual async Task<List<TEntity>> GetAll() => await DbSet.ToListAsync();
+
+    public async Task<IEnumerable<TEntity>> Search(Expression<Func<TEntity, bool>> predicate) => await DbSet.AsNoTrackingWithIdentityResolution().Where(predicate).ToListAsync();
 
     public virtual async Task Add(TEntity entity)
     {

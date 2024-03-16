@@ -5,7 +5,7 @@ namespace HD.Domain.Users.Entities;
 
 public class User : Entity
 {
-    protected User() { }
+    public User() { }
 
     public User(string registration, string firstName, string lastName, string? extension)
     {

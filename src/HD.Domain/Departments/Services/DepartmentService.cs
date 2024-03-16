@@ -36,13 +36,6 @@ public class DepartmentService : BaseService, IDepartmentService
             return;
         }
 
-        var client = await _repository.GetClientByDepartmentCode(department.Code);
-        if (client != null)
-        {
-            Notify("Esse departamento não pode ser excluído");
-            return;
-        }
-
         await _repository.Delete(id);
     }
 

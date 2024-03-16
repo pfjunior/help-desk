@@ -5,7 +5,7 @@ namespace HD.Domain.Departments.Entities;
 
 public class Department : Entity
 {
-    protected Department() => _users = new();
+    public Department() => _users = new();
 
     public Department(string code, string name)
     {

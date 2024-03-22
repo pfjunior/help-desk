@@ -25,6 +25,4 @@ public class Department : Entity
     public void SetCode(string code) => Code = code;
 
     public void SetName(string name) => Name = name;
-
-    public string Teste { get; set; }
 }

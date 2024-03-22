@@ -1,4 +1,5 @@
 using HD.Infra.Context;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+var connectionString = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("DefaultConnection")).Password = builder.Configuration["DbPassword"];
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 

@@ -4,6 +4,8 @@ namespace HD.Api.ViewModels.Departments;
 
 public class UpdateDepartmentViewModel
 {
+    public Guid Id { get; set; }
+
     [Required(ErrorMessage = "O campo {ProperpetyName} precisa ser preenchido")]
     [Range(2, 6, ErrorMessage = "O campo {PropertyName} deve ter entre {MinLength} e {MaxLength} de caracteres")]
     public string Code { get; set; }

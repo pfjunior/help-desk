@@ -22,4 +22,6 @@ public class User : Entity
 
     public Guid DepartmentId { get; private set; }
     public Department Department { get; private set; }
+
+    public override string ToString() => $"{FirstName} {LastName}";
 }

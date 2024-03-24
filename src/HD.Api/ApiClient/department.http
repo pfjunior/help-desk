@@ -1,0 +1,40 @@
+@Path = /api/departments
+
+### Get All
+GET {{HostAddress}}{{Path}}
+Accept: application/json
+
+### Get All with Users
+GET {{HostAddress}}{{Path}}/users
+Accept: application/json
+
+### Get by Id
+GET {{HostAddress}}{{Path}}/0d20838e-c1c9-4247-b8ad-fb7f778627b7
+Accept: application/json
+
+### Get by Code
+GET {{HostAddress}}{{Path}}/rh
+Accept: application/json
+
+### Post
+POST {{HostAddress}}{{Path}}
+Content-Type: application/json
+
+{
+  "code": "TST",
+  "name": "Test"
+}
+
+### Put
+PUT {{HostAddress}}{{Path}}/147ee4a3-e334-4db0-b071-6a47534632d2
+Content-Type: application/json
+
+{
+  "id": "147ee4a3-e334-4db0-b071-6a47534632d2",
+  "code": "TST2",
+  "name": "Test Editado"
+}
+
+### Delete
+DELETE {{HostAddress}}{{Path}}/147ee4a3-e334-4db0-b071-6a47534632d2
+Content-Type: application/json

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HD.Infra.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240316134747_Initial")]
+    [Migration("20240324141539_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -39,11 +39,7 @@ namespace HD.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Teste")
-                        .IsRequired()
-                        .HasColumnType("varchar(150)");
-
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -98,7 +94,7 @@ namespace HD.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("DepartmentId")
+                    b.Property<Guid?>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Extension")
@@ -164,8 +160,7 @@ namespace HD.Infra.Migrations
                 {
                     b.HasOne("HD.Domain.Departments.Entities.Department", "Department")
                         .WithMany("Users")
-                        .HasForeignKey("DepartmentId")
-                        .IsRequired();
+                        .HasForeignKey("DepartmentId");
 
                     b.Navigation("Department");
                 });

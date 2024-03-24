@@ -5,7 +5,7 @@ namespace HD.Domain.Core.Interfaces;
 
 public interface IRepository<TEntity> : IDisposable where TEntity : Entity
 {
-    Task<List<TEntity>> GetAll();
+    Task<IEnumerable<TEntity>> GetAll();
     Task<TEntity> GetById(Guid id);
     Task<IEnumerable<TEntity>> Search(Expression<Func<TEntity, bool>> predicate);
 

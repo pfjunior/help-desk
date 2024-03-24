@@ -5,5 +5,4 @@ namespace HD.Domain.Users.Interfaces;
 
 public interface IUserRepository : IRepository<User>
 {
-    Task<IEnumerable<User>> GetUsersByDepartment(Guid departmentId);
 }

@@ -19,8 +19,9 @@ public class Department : Entity
     private List<User> _users;
     public IReadOnlyCollection<User> Users => _users;
 
-    public Guid UserId { get; private set; }
+    public Guid? UserId { get; private set; }
 
+    public void SetId(Guid id) => Id = id;
 
     public void SetCode(string code) => Code = code;
 

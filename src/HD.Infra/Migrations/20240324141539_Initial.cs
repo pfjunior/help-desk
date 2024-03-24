@@ -18,8 +18,7 @@ namespace HD.Infra.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Code = table.Column<string>(type: "varchar(6)", nullable: false),
                     Name = table.Column<string>(type: "varchar(100)", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Teste = table.Column<string>(type: "varchar(150)", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -55,7 +54,7 @@ namespace HD.Infra.Migrations
                     FirstName = table.Column<string>(type: "varchar(30)", nullable: false),
                     LastName = table.Column<string>(type: "varchar(30)", nullable: false),
                     Extension = table.Column<string>(type: "varchar(150)", nullable: true),
-                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {

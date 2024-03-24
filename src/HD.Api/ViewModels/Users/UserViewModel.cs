@@ -7,5 +7,5 @@ public class UserViewModel
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string? Extension { get; set; }
-    public string? Department { get; set; }
+    public string? DepartmentName { get; set; }
 }

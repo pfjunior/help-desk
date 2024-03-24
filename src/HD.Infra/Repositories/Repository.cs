@@ -19,7 +19,7 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 
     public virtual async Task<TEntity> GetById(Guid id) => await DbSet.FindAsync(id);
 
-    public virtual async Task<List<TEntity>> GetAll() => await DbSet.ToListAsync();
+    public virtual async Task<IEnumerable<TEntity>> GetAll() => await DbSet.ToListAsync();
 
     public async Task<IEnumerable<TEntity>> Search(Expression<Func<TEntity, bool>> predicate) => await DbSet.AsNoTrackingWithIdentityResolution().Where(predicate).ToListAsync();
 

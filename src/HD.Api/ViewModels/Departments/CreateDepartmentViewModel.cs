@@ -4,11 +4,11 @@ namespace HD.Api.ViewModels.Departments;
 
 public class CreateDepartmentViewModel
 {
-    [Required(ErrorMessage = "O campo {ProperpetyName} precisa ser preenchido")]
-    [Range(2, 6, ErrorMessage = "O campo {PropertyName} deve ter entre {MinLength} e {MaxLength} de caracteres")]
+    [Required(ErrorMessage = "O campo {0} precisa ser preenchido")]
+    [StringLength(6, ErrorMessage = "O campo {0} deve ter entre {2} e {1} de caracteres", MinimumLength = 2)]
     public string Code { get; set; }
 
-    [Required(ErrorMessage = "O campo {ProperpetyName} precisa ser preenchido")]
-    [Range(2, 6, ErrorMessage = "O campo {PropertyName} deve ter entre {MinLength} e {MaxLength} de caracteres")]
+    [Required(ErrorMessage = "O campo {0} precisa ser preenchido")]
+    [StringLength(100, ErrorMessage = "O campo {0} deve ter entre {2} e {1} de caracteres", MinimumLength = 2)]
     public string Name { get; set; }
 }

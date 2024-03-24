@@ -15,8 +15,7 @@ CREATE TABLE [Departments] (
     [Id] uniqueidentifier NOT NULL,
     [Code] varchar(6) NOT NULL,
     [Name] varchar(100) NOT NULL,
-    [UserId] uniqueidentifier NOT NULL,
-    [Teste] varchar(150) NOT NULL,
+    [UserId] uniqueidentifier NULL,
     CONSTRAINT [PK_Departments] PRIMARY KEY ([Id])
 );
 GO
@@ -42,7 +41,7 @@ CREATE TABLE [Users] (
     [FirstName] varchar(30) NOT NULL,
     [LastName] varchar(30) NOT NULL,
     [Extension] varchar(150) NULL,
-    [DepartmentId] uniqueidentifier NOT NULL,
+    [DepartmentId] uniqueidentifier NULL,
     CONSTRAINT [PK_Users] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_Users_Departments_DepartmentId] FOREIGN KEY ([DepartmentId]) REFERENCES [Departments] ([Id])
 );
@@ -63,7 +62,7 @@ CREATE INDEX [IX_Users_DepartmentId] ON [Users] ([DepartmentId]);
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20240316134747_Initial', N'8.0.3');
+VALUES (N'20240324141539_Initial', N'8.0.3');
 GO
 
 COMMIT;

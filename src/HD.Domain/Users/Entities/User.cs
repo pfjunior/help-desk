@@ -20,8 +20,8 @@ public class User : Entity
     public string LastName { get; private set; }
     public string? Extension { get; private set; }
 
-    public Guid DepartmentId { get; private set; }
-    public Department Department { get; private set; }
+    public Guid? DepartmentId { get; private set; }
+    public Department? Department { get; private set; }
 
     public override string ToString() => $"{FirstName} {LastName}";
 }

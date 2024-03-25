@@ -55,11 +55,11 @@ public class DepartmentsController : MainController
     }
 
     [HttpPost]
-    public async Task<ActionResult<CreateDepartmentViewModel>> Create(CreateDepartmentViewModel viewModel)
+    public async Task<ActionResult<CreateDepartmentViewModel>> Create([FromBody] CreateDepartmentViewModel viewModel)
     {
         if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-        await _service.Add(new Department(viewModel.Code, viewModel.Name));
+        await _service.Add(_mapper.Map<Department>(viewModel));
 
         return CustomResponse(HttpStatusCode.Created, viewModel);
     }
@@ -70,17 +70,12 @@ public class DepartmentsController : MainController
         if (id != viewModel.Id)
         {
             NotifyError("O id informado não é o mesmo que foi passado na query");
-            CustomResponse();
+            return CustomResponse();
         }
 
         if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-        var department = new Department();
-        department.SetId(viewModel.Id);
-        department.SetCode(viewModel.Code);
-        department.SetName(viewModel.Name);
-
-        await _service.Update(department);
+        await _service.Update(_mapper.Map<Department>(viewModel));
 
         return CustomResponse(HttpStatusCode.NoContent);
     }

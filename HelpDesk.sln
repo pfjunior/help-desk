@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{14C15819-8661-4D44-8F18-F2EB36D1A078}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD.Domain", "src\HD.Domain\HD.Domain.csproj", "{CEE9D9CF-6E55-467F-B5A8-01E44406E8B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HD.Domain", "src\HD.Domain\HD.Domain.csproj", "{CEE9D9CF-6E55-467F-B5A8-01E44406E8B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD.Infra", "src\HD.Infra\HD.Infra.csproj", "{50397053-E4AC-460D-8B40-642B90B2469F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HD.Infra", "src\HD.Infra\HD.Infra.csproj", "{50397053-E4AC-460D-8B40-642B90B2469F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionsItems", "SolutionsItems", "{B5191B2D-FD66-4896-9EB4-5BC607AF0E28}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\build.yml = .github\workflows\build.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD.Api", "src\HD.Api\HD.Api.csproj", "{59DBC371-731A-4188-B257-18B2C62E0283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HD.Api", "src\HD.Api\HD.Api.csproj", "{59DBC371-731A-4188-B257-18B2C62E0283}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

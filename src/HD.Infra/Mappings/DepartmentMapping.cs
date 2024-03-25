@@ -15,6 +15,6 @@ public class DepartmentMapping : IEntityTypeConfiguration<Department>
         builder.Property(p => p.Code).IsRequired().HasColumnType("varchar(6)");
         builder.Property(p => p.Name).IsRequired().HasColumnType("varchar(100)");
 
-        builder.HasMany(p => p.Users).WithOne(p => p.Department).HasForeignKey(p => p.DepartmentId);
+        builder.HasMany(p => p.Employees).WithOne(p => p.Department).HasForeignKey(p => p.DepartmentId);
     }
 }

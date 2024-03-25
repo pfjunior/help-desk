@@ -29,7 +29,7 @@ public class Ticket : Entity
     private readonly List<Comment> _comments;
     public IReadOnlyCollection<Comment> Comments => _comments;
 
-    public Guid UserId { get; private set; }
+    public Guid EmployeesId { get; private set; }
 
 
     #region Methods

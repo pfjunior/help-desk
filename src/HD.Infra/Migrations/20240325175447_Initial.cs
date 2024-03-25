@@ -17,8 +17,7 @@ namespace HD.Infra.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Code = table.Column<string>(type: "varchar(6)", nullable: false),
-                    Name = table.Column<string>(type: "varchar(100)", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    Name = table.Column<string>(type: "varchar(100)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,7 +37,7 @@ namespace HD.Infra.Migrations
                     Priority = table.Column<int>(type: "int", nullable: false),
                     CreatedIn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CompletedIn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    EmployeesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,7 +45,7 @@ namespace HD.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "Employees",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -54,13 +53,13 @@ namespace HD.Infra.Migrations
                     FirstName = table.Column<string>(type: "varchar(30)", nullable: false),
                     LastName = table.Column<string>(type: "varchar(30)", nullable: false),
                     Extension = table.Column<string>(type: "varchar(150)", nullable: true),
-                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Departments_DepartmentId",
+                        name: "FK_Employees_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id");
@@ -75,7 +74,7 @@ namespace HD.Infra.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "varchar(500)", nullable: false),
                     CreatedIn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    EmployeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,8 +87,8 @@ namespace HD.Infra.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_DepartmentId",
-                table: "Users",
+                name: "IX_Employees_DepartmentId",
+                table: "Employees",
                 column: "DepartmentId");
         }
 
@@ -100,7 +99,7 @@ namespace HD.Infra.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "Tickets");

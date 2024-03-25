@@ -1,0 +1,46 @@
+@Path = /api/employees
+
+### Get All
+GET {{HostAddress}}{{Path}}
+Accept: application/json
+
+### Get All with Users
+GET {{HostAddress}}{{Path}}/users
+Accept: application/json
+
+### Get by Id
+GET {{HostAddress}}{{Path}}/8bd55573-cbd2-417c-89fa-13d42dea03fc
+Accept: application/json
+
+### Get by Registration
+GET {{HostAddress}}{{Path}}/
+Accept: application/json
+
+### Post
+POST {{HostAddress}}{{Path}}
+Content-Type: application/json
+
+{
+  "registration": "000003",
+  "firstName": "Steve",
+  "lastName": "Roger",
+  "extension": "301",
+  "departmentId": "aed80f25-4b0e-4e93-80dc-588f83d85ac5"
+}
+
+### Put
+PUT {{HostAddress}}{{Path}}/8bd55573-cbd2-417c-89fa-13d42dea03fc
+Content-Type: application/json
+
+{
+  "id": "8bd55573-cbd2-417c-89fa-13d42dea03fc",
+  "registration": "000003",
+  "firstName": "Steve",
+  "lastName": "Rogers",
+  "extension": "301",
+  "departmentId": "aed80f25-4b0e-4e93-80dc-588f83d85ac5"
+}
+
+### Delete
+DELETE {{HostAddress}}{{Path}}/8bd55573-cbd2-417c-89fa-13d42dea03fc
+Content-Type: application/json

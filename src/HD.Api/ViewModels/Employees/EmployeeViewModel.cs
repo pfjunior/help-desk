@@ -1,6 +1,6 @@
-﻿namespace HD.Api.ViewModels.Users;
+﻿namespace HD.Api.ViewModels.Employees;
 
-public class UserViewModel
+public class EmployeeViewModel
 {
     public Guid Id { get; set; }
     public string Registration { get; set; }

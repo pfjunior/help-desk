@@ -9,7 +9,5 @@ public class DepartmentRepository : Repository<Department>, IDepartmentRepositor
 {
     public DepartmentRepository(ApplicationContext context) : base(context) { }
 
-    public async Task<Department> GetByCode(string code) => await Context.Departments.AsNoTrackingWithIdentityResolution().FirstOrDefaultAsync(p => p.Code.ToLower() == code.ToLower());
-
-    public async Task<IEnumerable<Department>> GetDepartmentsUsers() => await Context.Departments.AsNoTrackingWithIdentityResolution().Include(p => p.Users).OrderBy(p => p.Name).ToListAsync();
+    public async Task<Department> GetByCode(string code) => await Context.Departments.AsNoTrackingWithIdentityResolution().Include(p => p.Employees).FirstOrDefaultAsync(p => p.Code.ToLower() == code.ToLower());
 }

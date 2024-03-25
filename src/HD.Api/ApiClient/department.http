@@ -4,16 +4,12 @@
 GET {{HostAddress}}{{Path}}
 Accept: application/json
 
-### Get All with Users
-GET {{HostAddress}}{{Path}}/users
-Accept: application/json
-
 ### Get by Id
-GET {{HostAddress}}{{Path}}/0d20838e-c1c9-4247-b8ad-fb7f778627b7
+GET {{HostAddress}}{{Path}}/aed80f25-4b0e-4e93-80dc-588f83d85ac5
 Accept: application/json
 
 ### Get by Code
-GET {{HostAddress}}{{Path}}/rh
+GET {{HostAddress}}{{Path}}/ti
 Accept: application/json
 
 ### Post
@@ -21,20 +17,20 @@ POST {{HostAddress}}{{Path}}
 Content-Type: application/json
 
 {
-  "code": "TST",
-  "name": "Test"
+  "code": "FIN",
+  "name": "Financeiro"
 }
 
 ### Put
-PUT {{HostAddress}}{{Path}}/8d474c66-3d2e-48b1-a475-f2b451164665
+PUT {{HostAddress}}{{Path}}/aed80f25-4b0e-4e93-80dc-588f83d85ac5
 Content-Type: application/json
 
 {
-  "id": "8d474c66-3d2e-48b1-a475-f2b451164665",
-  "code": "TST2",
-  "name": "Test Editado"
+  "id": "aed80f25-4b0e-4e93-80dc-588f83d85ac5",
+  "code": "FIN",
+  "name": "Financeiro"
 }
 
 ### Delete
-DELETE {{HostAddress}}{{Path}}/8d474c66-3d2e-48b1-a475-f2b451164665
+DELETE {{HostAddress}}{{Path}}/aed80f25-4b0e-4e93-80dc-588f83d85ac5
 Content-Type: application/json

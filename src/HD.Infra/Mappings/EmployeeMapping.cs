@@ -1,12 +1,12 @@
-﻿using HD.Domain.Users.Entities;
+﻿using HD.Domain.Employees.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HD.Infra.Mappings;
 
-public class UserMapping : IEntityTypeConfiguration<User>
+public class EmployeeMapping : IEntityTypeConfiguration<Employee>
 {
-    public void Configure(EntityTypeBuilder<User> builder)
+    public void Configure(EntityTypeBuilder<Employee> builder)
     {
         builder.HasKey(p => p.Id);
 

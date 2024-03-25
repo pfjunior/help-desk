@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HD.Infra.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240324141539_Initial")]
+    [Migration("20240325175447_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -39,62 +39,18 @@ namespace HD.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
                     b.ToTable("Departments", (string)null);
                 });
 
-            modelBuilder.Entity("HD.Domain.Tickets.Entities.Ticket", b =>
+            modelBuilder.Entity("HD.Domain.Employees.Entities.Employee", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("CompletedIn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("CreatedIn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<int>("Priority")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Solution")
-                        .IsRequired()
-                        .HasColumnType("varchar(500)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tickets", (string)null);
-                });
-
-            modelBuilder.Entity("HD.Domain.Users.Entities.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("DepartmentId")
+                    b.Property<Guid>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Extension")
@@ -116,7 +72,58 @@ namespace HD.Infra.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("HD.Domain.Tickets.Entities.Ticket", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CompletedIn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedIn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<Guid>("EmployeesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Solution")
+                        .IsRequired()
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tickets", (string)null);
+                });
+
+            modelBuilder.Entity("HD.Domain.Employees.Entities.Employee", b =>
+                {
+                    b.HasOne("HD.Domain.Departments.Entities.Department", "Department")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentId")
+                        .IsRequired();
+
+                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("HD.Domain.Tickets.Entities.Ticket", b =>
@@ -141,9 +148,9 @@ namespace HD.Infra.Migrations
                                 .HasColumnType("varchar(500)")
                                 .HasColumnName("Description");
 
-                            b1.Property<Guid>("UserId")
+                            b1.Property<Guid>("EmployeeId")
                                 .HasColumnType("uniqueidentifier")
-                                .HasColumnName("UserId");
+                                .HasColumnName("EmployeeId");
 
                             b1.HasKey("TicketId", "Id");
 
@@ -156,18 +163,9 @@ namespace HD.Infra.Migrations
                     b.Navigation("Comments");
                 });
 
-            modelBuilder.Entity("HD.Domain.Users.Entities.User", b =>
-                {
-                    b.HasOne("HD.Domain.Departments.Entities.Department", "Department")
-                        .WithMany("Users")
-                        .HasForeignKey("DepartmentId");
-
-                    b.Navigation("Department");
-                });
-
             modelBuilder.Entity("HD.Domain.Departments.Entities.Department", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

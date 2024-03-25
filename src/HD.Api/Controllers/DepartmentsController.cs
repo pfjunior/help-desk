@@ -28,30 +28,24 @@ public class DepartmentsController : MainController
         return _mapper.Map<IEnumerable<DepartmentViewModel>>(await _repository.GetAll());
     }
 
-    [HttpGet("users")]
-    public async Task<IEnumerable<DepartmentViewModel>> GetDepartmentsUsers()
-    {
-        return _mapper.Map<IEnumerable<DepartmentViewModel>>(await _repository.GetDepartmentsUsers());
-    }
-
     [HttpGet("{id:Guid}")]
     public async Task<ActionResult<DepartmentViewModel>> GetById(Guid id)
     {
-        var department = await GetDepartmentById(id);
+        var result = await GetDepartmentById(id);
 
-        if (department == null) return NotFound();
+        if (result == null) return NotFound();
 
-        return department;
+        return result;
     }
 
     [HttpGet("{code}")]
     public async Task<ActionResult<DepartmentViewModel>> GetByCode(string code)
     {
-        var department = _mapper.Map<DepartmentViewModel>(await _repository.GetByCode(code));
+        var result = _mapper.Map<DepartmentViewModel>(await _repository.GetByCode(code));
 
-        if (department == null) return NotFound();
+        if (result == null) return NotFound();
 
-        return department;
+        return result;
     }
 
     [HttpPost]

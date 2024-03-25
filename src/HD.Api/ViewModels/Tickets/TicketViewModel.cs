@@ -1,6 +1,6 @@
-﻿using HD.Domain.Tickets.Enums;
+﻿using HD.Domain.Employees.Entities;
+using HD.Domain.Tickets.Enums;
 using HD.Domain.Tickets.ValueObjects;
-using HD.Domain.Users.Entities;
 using Type = HD.Domain.Tickets.Enums.Type;
 
 namespace HD.Api.ViewModels.Tickets;
@@ -17,5 +17,5 @@ public class TicketViewModel
     public DateTime? CompletedIn { get; set; }
     public IReadOnlyCollection<Comment> Comments { get; set; }
 
-    public User User { get; set; }
+    public Employee User { get; set; }
 }

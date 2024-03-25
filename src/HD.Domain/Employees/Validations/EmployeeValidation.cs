@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using HD.Domain.Users.Entities;
+using HD.Domain.Employees.Entities;
 
-namespace HD.Domain.Users.Validations;
+namespace HD.Domain.Employees.Validations;
 
-public class UserValidation : AbstractValidator<User>
+public class EmployeeValidation : AbstractValidator<Employee>
 {
-    public UserValidation()
+    public EmployeeValidation()
     {
         RuleFor(p => p.Registration)
             .NotEmpty().WithMessage("O campo {PropertyName} deve ser preenchido")

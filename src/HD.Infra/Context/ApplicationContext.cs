@@ -1,6 +1,6 @@
 ﻿using HD.Domain.Departments.Entities;
+using HD.Domain.Employees.Entities;
 using HD.Domain.Tickets.Entities;
-using HD.Domain.Users.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -16,7 +16,7 @@ public class ApplicationContext : DbContext
 
     public DbSet<Ticket> Tickets { get; set; }
     public DbSet<Department> Departments { get; set; }
-    public DbSet<User> Users { get; set; }
+    public DbSet<Employee> Employees { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

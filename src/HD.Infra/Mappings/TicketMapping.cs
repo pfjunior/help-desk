@@ -23,7 +23,7 @@ public class TicketMapping : IEntityTypeConfiguration<Ticket>
 
             c.Property(p => p.Description).HasColumnName("Description").HasColumnType("varchar(500)");
             c.Property(p => p.CreatedIn).HasColumnName("CreatedIn");
-            c.Property(p => p.UserId).HasColumnName("UserId");
+            c.Property(p => p.EmployeeId).HasColumnName("EmployeeId");
         });
     }
 }

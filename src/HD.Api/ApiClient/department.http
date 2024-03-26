@@ -17,8 +17,8 @@ POST {{HostAddress}}{{Path}}
 Content-Type: application/json
 
 {
-  "code": "FIN",
-  "name": "Financeiro"
+  "code": "TST",
+  "name": "Teste"
 }
 
 ### Put
@@ -28,7 +28,7 @@ Content-Type: application/json
 {
   "id": "aed80f25-4b0e-4e93-80dc-588f83d85ac5",
   "code": "FIN",
-  "name": "Financeiro"
+  "name": "Financeiro Editado"
 }
 
 ### Delete

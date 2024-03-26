@@ -15,7 +15,7 @@ public class TicketMapping : IEntityTypeConfiguration<Ticket>
         builder.Property(p => p.Title).IsRequired().HasColumnType("varchar(100)");
         builder.Property(p => p.Description).IsRequired().HasColumnType("varchar(500)");
         builder.Property(p => p.Solution).HasColumnType("varchar(500)");
-        builder.Property(p => p.Priority).IsRequired();
+        builder.Property(p => p.Priority);
 
         builder.OwnsMany(p => p.Comments, c =>
         {

@@ -1,0 +1,40 @@
+@Path = /api/tickets
+
+### Get All
+GET {{HostAddress}}{{Path}}
+Accept: application/json
+
+### Get by Id
+GET {{HostAddress}}{{Path}}/aed80f25-4b0e-4e93-80dc-588f83d85ac5
+Accept: application/json
+
+### Post
+POST {{HostAddress}}{{Path}}
+Content-Type: application/json
+
+{
+  "title": "PC não liga",
+  "description": "Pc não está ligando",
+  "type": 1,
+  "employeeId": "7ca19e4e-4d39-4c04-984b-2ffa322e1bb8"
+}
+
+### Put
+PUT {{HostAddress}}{{Path}}/263534c5-1c50-41a7-a3af-0fe62047434d
+Content-Type: application/json
+
+  {
+    "id": "263534c5-1c50-41a7-a3af-0fe62047434d",
+    "title": "PC não liga",
+    "description": "Pc não está ligando",
+    "solution": "",
+    "type": 2,
+    "status": 1,
+    "priority": 2,
+    "employeeId": "7ca19e4e-4d39-4c04-984b-2ffa322e1bb8"
+  }
+
+
+### Delete
+DELETE {{HostAddress}}{{Path}}/6ce92aa7-333d-4444-a5ed-bc6c7a241805
+Content-Type: application/json

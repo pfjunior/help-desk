@@ -2,7 +2,7 @@
 
 public enum Type
 {
-    Software,
+    Software = 1,
     Hardware,
     InternetNetwork
 }

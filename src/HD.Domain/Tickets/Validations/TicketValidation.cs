@@ -17,8 +17,5 @@ public class TicketValidation : AbstractValidator<Ticket>
 
         RuleFor(p => p.Solution)
            .Length(2, 500).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres");
-
-        RuleFor(p => p.Priority)
-            .NotEmpty().WithMessage("O campo {PropertyName} precisa ser preenchido");
     }
 }

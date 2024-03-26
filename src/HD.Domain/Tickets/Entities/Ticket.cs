@@ -9,27 +9,28 @@ public class Ticket : Entity
 {
     public Ticket() => _comments = new List<Comment>();
 
-    public Ticket(string title, string description, Type type)
+    public Ticket(string title, string description, Type type, Guid employeerId)
     {
         Title = title;
         Description = description;
         Type = type;
         Status = Status.Pending;
+        EmployeeId = employeerId;
     }
 
     public string Title { get; private set; }
     public string Description { get; private set; }
-    public string Solution { get; private set; }
+    public string? Solution { get; private set; }
     public Type Type { get; private set; }
     public Status Status { get; private set; }
-    public Priority Priority { get; private set; }
+    public Priority? Priority { get; private set; }
     public DateTime CreatedIn { get; private set; }
     public DateTime? CompletedIn { get; private set; }
 
     private readonly List<Comment> _comments;
     public IReadOnlyCollection<Comment> Comments => _comments;
 
-    public Guid EmployeesId { get; private set; }
+    public Guid EmployeeId { get; private set; }
 
 
     #region Methods
@@ -37,8 +38,11 @@ public class Ticket : Entity
 
     public void AddSolution(string solution)
     {
-        Solution = solution;
-        CompletedIn = DateTime.Now;
+        if (!String.IsNullOrEmpty(solution))
+        {
+            Solution = solution;
+            CompletedIn = DateTime.Now;
+        }
     }
 
     public void SetType(Type type) => Type = type;

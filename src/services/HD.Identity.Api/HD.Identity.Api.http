@@ -1,6 +1,21 @@
-@HD.Identity.Api_HostAddress = http://localhost:5133
+@HostAddress = http://localhost:5133
+@Path = /api/identity
 
-GET {{HD.Identity.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### Register
+POST {{HostAddress}}{{Path}}/new-account
+Content-Type: application/json
 
-###
+{
+  "email": "bruce@waynecorp.com",
+  "password": "Teste@123",
+  "confirmPassword": "Teste@123"
+}
+
+### Login
+POST {{HostAddress}}{{Path}}/authenticate
+Content-Type: application/json
+
+{
+  "email": "bruce@waynecorp.com",
+  "password": "Teste@123"
+}

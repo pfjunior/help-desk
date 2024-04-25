@@ -1,4 +1,4 @@
-namespace HD.Employees.Api;
+namespace HD.Users.Api;
 
 public class WeatherForecast
 {

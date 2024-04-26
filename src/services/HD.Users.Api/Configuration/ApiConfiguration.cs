@@ -1,6 +1,6 @@
 ﻿using HD.WebApi.Core.Identitty;
 
-namespace HD.Identity.Api.Configuration;
+namespace HD.Users.Api.Configuration;
 
 public static class ApiConfiguration
 {

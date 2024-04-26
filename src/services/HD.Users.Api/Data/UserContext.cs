@@ -1,19 +1,22 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HD.Core.Data;
+using HD.Users.Api.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace HD.Users.Api.Data;
 
-public class UserContext : DbContext
+public class UserContext : DbContext, IUnitOfWork
 {
     public UserContext(DbContextOptions<UserContext> options) : base(options)
     {
-        ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTrackingWithIdentityResolution;
         ChangeTracker.AutoDetectChangesEnabled = false;
     }
 
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string)))) property.SetColumnType("varchar(150)");
+        foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string)))) property.SetColumnType("varchar(100)");
 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserContext).Assembly);
 
@@ -33,5 +36,12 @@ public class UserContext : DbContext
         }
 
         return base.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task<bool> CommitAsync()
+    {
+        var success = await SaveChangesAsync() > 0;
+
+        return success;
     }
 }

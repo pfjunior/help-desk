@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace HD.Users.Api.Domain.Interfaces;
 
-public interface IUserInterface : IRepository<User>
+public interface IUserRepository : IRepository<User>
 {
     Task<IEnumerable<User>> GetAll();
     Task<User> GetById(Guid id);
@@ -12,5 +12,5 @@ public interface IUserInterface : IRepository<User>
 
     Task AddAsync(User user);
     Task UpdateAsync(User user);
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(User user);
 }

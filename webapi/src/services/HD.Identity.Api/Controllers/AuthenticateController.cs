@@ -33,7 +33,7 @@ public class AuthenticateController : MainController
 
         var result = await _signInManager.PasswordSignInAsync(user.Email, user.Password, false, true);
 
-        if (result.Succeeded) return CustomResponse(await GenerateJwt(user.Email));
+        if (result.Succeeded) return CustomResponse(null, await GenerateJwt(user.Email));
 
         if (result.IsLockedOut)
         {
@@ -59,7 +59,7 @@ public class AuthenticateController : MainController
 
         var result = await _userManager.CreateAsync(newUser, user.Password);
 
-        if (result.Succeeded) return CustomResponse(await GenerateJwt(user.Email));
+        if (result.Succeeded) return CustomResponse(null, await GenerateJwt(user.Email));
 
         foreach (var error in result.Errors) AddProcessingError(error.Description);
 

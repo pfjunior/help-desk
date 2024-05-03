@@ -1,6 +1,37 @@
-@HD.Departments.Api_HostAddress = http://localhost:5009
+@HostAddress = http://localhost:5009
+@Path = /api/department
 
-GET {{HD.Departments.Api_HostAddress}}/weatherforecast/
+### GetAll
+GET {{HostAddress}}{{Path}}/
 Accept: application/json
 
-###
+### GetById
+GET {{HostAddress}}{{Path}}/e8a0b41f-b55a-4547-ae04-78135fdc1f92
+Accept: application/json
+
+### GetByCode
+GET {{HostAddress}}{{Path}}/it
+Accept: application/json
+
+### Create
+POST {{HostAddress}}{{Path}}/
+Content-Type: application/json
+
+{
+  "code": "hr",
+  "name": "Human Resources"
+}
+
+### Update
+PUT {{HostAddress}}{{Path}}/e8a0b41f-b55a-4547-ae04-78135fdc1f92
+Content-Type: application/json
+
+{
+  "id": "e8a0b41f-b55a-4547-ae04-78135fdc1f92",
+  "code": "it",
+  "name": "Information Technology"
+}
+
+### Delete
+DELETE {{HostAddress}}{{Path}}/5042e951-64a4-49f2-80a2-81909e6c40dc
+Content-Type: application/json

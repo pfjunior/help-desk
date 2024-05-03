@@ -24,7 +24,7 @@ public class UserController : MainController
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        return CustomResponse(await _repository.GetAll());
+        return CustomResponse(null, await _repository.GetAll());
     }
 
     [HttpPost("new-user")]

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HD.Users.Api.Data.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20240426185315_Initial")]
-    partial class Initial
+    [Migration("20240503192630_Users")]
+    partial class Users
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace HD.Users.Api.Data.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("CreatedIn")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Extension")
@@ -51,7 +51,7 @@ namespace HD.Users.Api.Data.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<DateTime?>("UpdatedIn")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

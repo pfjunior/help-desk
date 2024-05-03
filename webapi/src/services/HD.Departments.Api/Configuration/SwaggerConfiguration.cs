@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace HD.Users.Api.Configuration;
+namespace HD.Departments.Api.Configuration;
 
 public static class SwaggerConfiguration
 {
@@ -10,8 +10,8 @@ public static class SwaggerConfiguration
         {
             c.SwaggerDoc("v1", new OpenApiInfo()
             {
-                Title = "HelpDesk Users API",
-                Description = "Users API",
+                Title = "HelpDesk Departments API",
+                Description = "Departments API",
                 Contact = new OpenApiContact() { Name = "Paulo Junior", Email = "" },
                 License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
             });

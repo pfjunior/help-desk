@@ -31,7 +31,7 @@ namespace HD.Users.Api.Data.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("CreatedIn")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Extension")
@@ -48,7 +48,7 @@ namespace HD.Users.Api.Data.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<DateTime?>("UpdatedIn")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

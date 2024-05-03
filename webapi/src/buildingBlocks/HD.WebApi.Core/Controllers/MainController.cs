@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Net;
 
 namespace HD.WebApi.Core.Controllers;
 
@@ -8,10 +9,10 @@ public abstract class MainController : ControllerBase
 {
     protected ICollection<string> Errors = new List<string>();
 
-    protected ActionResult CustomResponse(object? result = null)
+    protected ActionResult CustomResponse(HttpStatusCode? statusCode = HttpStatusCode.OK, object? result = null)
     {
         return ValidOperation()
-            ? Ok(result)
+            ? new ObjectResult(result) { StatusCode = Convert.ToInt32(statusCode) }
             : BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
                 { "Messages", Errors.ToArray() }

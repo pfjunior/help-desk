@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HD.Users.Api.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Users : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,8 +22,8 @@ namespace HD.Users.Api.Data.Migrations
                     PhoneNumber = table.Column<string>(type: "varchar(100)", nullable: true),
                     Extension = table.Column<string>(type: "varchar(100)", nullable: true),
                     Active = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedIn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedIn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

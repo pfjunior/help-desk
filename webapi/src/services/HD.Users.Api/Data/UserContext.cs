@@ -27,13 +27,13 @@ public class UserContext : DbContext, IUnitOfWork
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("CreatedIn") != null))
+        foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("CreatedAt") != null))
         {
             if (entry.State == EntityState.Added)
-                entry.Property("CreatedIn").CurrentValue = DateTime.Now;
+                entry.Property("CreatedAt").CurrentValue = DateTime.Now;
 
             if (entry.State == EntityState.Modified)
-                entry.Property("UpdatedIn").IsModified = false;
+                entry.Property("UpdatedAt").IsModified = false;
         }
 
         return base.SaveChangesAsync(cancellationToken);

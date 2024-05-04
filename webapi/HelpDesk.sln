@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{CA8C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{E1F6D526-E47E-4D1A-AB4E-E4983C4E8435}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build.yml = .github\workflows\build.yml
+		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5D92366C-AC91-43EE-94E1-A8E0492A169A}"
@@ -42,7 +42,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HD.WebApi.Core", "src\build
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageBus", "MessageBus", "{CFF14B97-7B7E-4FB0-82FC-9700D9FB8167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD.MessageBus", "src\buildingBlocks\HD.MessageBus\HD.MessageBus.csproj", "{A0678C8D-714C-4B6A-BE6F-125D8CC0EF5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HD.MessageBus", "src\buildingBlocks\HD.MessageBus\HD.MessageBus.csproj", "{A0678C8D-714C-4B6A-BE6F-125D8CC0EF5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

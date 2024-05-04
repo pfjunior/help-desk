@@ -1,16 +1,18 @@
 @HostAddress = http://localhost:5133
 @Path = /api/identity
+@AccessJwt = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NWE2YjUzMS05Y2ZhLTQ3OTEtYjc3MS04MWFkYjEyM2U1OTkiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwianRpIjoiYjRhOGRiYTYtZGUzMy00MTcxLTk4ZjUtYjMzMTFkMTliMzZhIiwibmJmIjoxNzE0ODQ0NTM0LCJpYXQiOjE3MTQ4NDQ1MzQsImV4cCI6MTcxNDg1MTczNCwiaXNzIjoiSGVscERlc2siLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdCJ9.-j4qmGhlRJbKo7N4dNjL3GEeU9viWFz2TU1iLn_DaMs
 
 ### Register
 POST {{HostAddress}}{{Path}}/new-account
 Content-Type: application/json
+Authorization: Bearer {{AccessJwt}}
 
 {
-  "firstName": "Bruce",
-  "lastName": "Wayne",
-  "departmentCode": "IT",
-  "departmentName": "Information Technology",
-  "email": "bruce@waynecorp.com",
+  "firstName": "Diana",
+  "lastName": "Themyscira",
+  "departmentCode": "HR",
+  "departmentName": "Human Resources",
+  "email": "user2@email.com",
   "password": "Teste@123",
   "confirmPassword": "Teste@123"
 }

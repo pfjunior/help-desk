@@ -4,6 +4,7 @@ using HD.Identity.Api.Models.ViewModels;
 using HD.MessageBus;
 using HD.WebApi.Core.Controllers;
 using HD.WebApi.Core.Identitty;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -15,6 +16,8 @@ using System.Text;
 
 namespace HD.Identity.Api.Controllers;
 
+
+[Authorize]
 [Route("api/identity")]
 public class AuthenticateController : MainController
 {
@@ -32,7 +35,7 @@ public class AuthenticateController : MainController
         _bus = bus;
     }
 
-
+    [AllowAnonymous]
     [HttpPost("authenticate")]
     public async Task<ActionResult> Authenticate(UserLoginViewModel user)
     {
@@ -52,6 +55,8 @@ public class AuthenticateController : MainController
         return CustomResponse();
     }
 
+    [ClaimsAuthorize("Adminstrator", "Admin")]
+    [ClaimsAuthorize("Support", "Support")]
     [HttpPost("new-account")]
     public async Task<ActionResult> Register(UserRegisterViewModel user)
     {

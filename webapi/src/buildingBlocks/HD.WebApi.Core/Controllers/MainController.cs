@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Net;
 
@@ -24,6 +25,13 @@ public abstract class MainController : ControllerBase
         var errors = modelState.Values.SelectMany(e => e.Errors);
 
         foreach (var error in errors) AddProcessingError(error.ErrorMessage);
+
+        return CustomResponse();
+    }
+
+    protected ActionResult CustomResponse(ValidationResult validationResult)
+    {
+        foreach (var erro in validationResult.Errors) AddProcessingError(erro.ErrorMessage);
 
         return CustomResponse();
     }

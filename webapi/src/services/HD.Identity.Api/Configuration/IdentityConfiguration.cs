@@ -1,5 +1,4 @@
 ﻿using HD.Identity.Api.Data;
-using HD.WebApi.Core.Identitty;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,8 +15,6 @@ public static class IdentityConfiguration
                 //.AddErrorDescriber<IdentityPortuguseMessages>()
                 .AddEntityFrameworkStores<ApplicationContext>()
                 .AddDefaultTokenProviders();
-
-        builder.Services.AddJwtConfiguration(builder.Configuration);
 
         return builder;
     }

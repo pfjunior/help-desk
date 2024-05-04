@@ -9,15 +9,15 @@ namespace HD.WebApi.Core.Identitty;
 
 public static class JwtConfig
 {
-    public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration)
+    public static WebApplicationBuilder AddJwtConfiguration(this WebApplicationBuilder builder)
     {
-        var appSettingsSection = configuration.GetSection("AppSettings");
-        services.Configure<AppSettings>(appSettingsSection);
+        var appSettingsSection = builder.Configuration.GetSection("AppSettings");
+        builder.Services.Configure<AppSettings>(appSettingsSection);
 
         var appSettings = appSettingsSection.Get<AppSettings>();
         var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
-        services.AddAuthentication(options =>
+        builder.Services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -35,11 +35,15 @@ public static class JwtConfig
                 ValidIssuer = appSettings.Issuer
             };
         });
+
+        return builder;
     }
 
-    public static void UseAuthConfiguration(this IApplicationBuilder app)
+    public static WebApplication UseAuthConfiguration(this WebApplication app)
     {
         app.UseAuthentication();
         app.UseAuthorization();
+
+        return app;
     }
 }

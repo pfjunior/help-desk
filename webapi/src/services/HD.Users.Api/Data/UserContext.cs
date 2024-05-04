@@ -1,4 +1,8 @@
-﻿using HD.Core.Data;
+﻿using FluentValidation.Results;
+using HD.Core.Data;
+using HD.Core.Mediator;
+using HD.Core.Messages;
+using HD.Users.Api.Data.Extension;
 using HD.Users.Api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,10 +10,13 @@ namespace HD.Users.Api.Data;
 
 public class UserContext : DbContext, IUnitOfWork
 {
-    public UserContext(DbContextOptions<UserContext> options) : base(options)
+    private readonly IMediatorHandler _mediatorHandler;
+
+    public UserContext(DbContextOptions<UserContext> options, IMediatorHandler mediatorHandler) : base(options)
     {
         ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTrackingWithIdentityResolution;
         ChangeTracker.AutoDetectChangesEnabled = false;
+        _mediatorHandler = mediatorHandler;
     }
 
     public DbSet<User> Users { get; set; }
@@ -21,8 +28,8 @@ public class UserContext : DbContext, IUnitOfWork
 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserContext).Assembly);
 
-
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.Ignore<ValidationResult>();
+        modelBuilder.Ignore<Event>();
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -42,6 +49,8 @@ public class UserContext : DbContext, IUnitOfWork
     public async Task<bool> CommitAsync()
     {
         var success = await SaveChangesAsync() > 0;
+
+        if (success) await _mediatorHandler.PublishEvents(this);
 
         return success;
     }

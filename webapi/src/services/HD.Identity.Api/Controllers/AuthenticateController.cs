@@ -1,5 +1,7 @@
-﻿using HD.Identity.Api.Models;
+﻿using HD.Core.Messages.Integration;
+using HD.Identity.Api.Models;
 using HD.Identity.Api.Models.ViewModels;
+using HD.MessageBus;
 using HD.WebApi.Core.Controllers;
 using HD.WebApi.Core.Identitty;
 using Microsoft.AspNetCore.Identity;
@@ -7,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -18,16 +21,20 @@ public class AuthenticateController : MainController
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly UserManager<IdentityUser> _userManager;
     private readonly AppSettings _appSettings;
+    private readonly IMessageBus _bus;
 
-    public AuthenticateController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IOptions<AppSettings> appSettings)
+
+    public AuthenticateController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IOptions<AppSettings> appSettings, IMessageBus bus)
     {
         _signInManager = signInManager;
         _userManager = userManager;
         _appSettings = appSettings.Value;
+        _bus = bus;
     }
 
+
     [HttpPost("authenticate")]
-    public async Task<ActionResult> Login(UserLoginViewModel user)
+    public async Task<ActionResult> Authenticate(UserLoginViewModel user)
     {
         if (!ModelState.IsValid) return CustomResponse(ModelState);
 
@@ -59,7 +66,17 @@ public class AuthenticateController : MainController
 
         var result = await _userManager.CreateAsync(newUser, user.Password);
 
-        if (result.Succeeded) return CustomResponse(null, await GenerateJwt(user.Email));
+        if (result.Succeeded)
+        {
+            var userRegisterResult = await UserRegister(user);
+
+            if (!userRegisterResult.ValidationResult.IsValid)
+            {
+                await _userManager.DeleteAsync(newUser);
+                return CustomResponse(userRegisterResult.ValidationResult);
+            }
+            return CustomResponse(HttpStatusCode.OK, await GenerateJwt(user.Email));
+        }
 
         foreach (var error in result.Errors) AddProcessingError(error.Description);
 
@@ -128,5 +145,21 @@ public class AuthenticateController : MainController
     }
 
     private static long ToUnixEpochDate(DateTime date) => (long)Math.Round((date.ToUniversalTime() - DateTimeOffset.UnixEpoch).TotalSeconds);
+
+    private async Task<ResponseMessage> UserRegister(UserRegisterViewModel userRegister)
+    {
+        var user = await _userManager.FindByEmailAsync(userRegister.Email);
+        var userRegistred = new UserRegistredIntergrationEvent(Guid.Parse(user.Id), userRegister.FirstName, userRegister.LastName, userRegister.Email, userRegister.DepartmentCode, userRegister.DepartmentName);
+
+        try
+        {
+            return await _bus.RequestAsync<UserRegistredIntergrationEvent, ResponseMessage>(userRegistred);
+        }
+        catch
+        {
+            await _userManager.DeleteAsync(user);
+            throw;
+        }
+    }
     #endregion
 }

@@ -6,12 +6,16 @@ POST {{HostAddress}}{{Path}}/new-account
 Content-Type: application/json
 
 {
+  "firstName": "Bruce",
+  "lastName": "Wayne",
+  "departmentCode": "IT",
+  "departmentName": "Information Technology",
   "email": "bruce@waynecorp.com",
   "password": "Teste@123",
   "confirmPassword": "Teste@123"
 }
 
-### Login
+### Authenticate
 POST {{HostAddress}}{{Path}}/authenticate
 Content-Type: application/json
 

@@ -13,9 +13,14 @@ public class UserMapping : IEntityTypeConfiguration<User>
 
         builder.Property(u => u.FirstName).IsRequired().HasColumnType("varchar(100)");
         builder.Property(u => u.LastName).IsRequired().HasColumnType("varchar(100)");
-        builder.OwnsOne(u => u.Email, te =>
+        builder.OwnsOne(u => u.Email, ue =>
         {
-            te.Property(e => e.Address).IsRequired().HasColumnName("Email").HasColumnType($"varchar({Email.AddressMaxLength})");
+            ue.Property(e => e.Address).IsRequired().HasColumnName("Email").HasColumnType($"varchar({Email.AddressMaxLength})");
+        });
+        builder.OwnsOne(u => u.Department, ud =>
+        {
+            ud.Property(d => d.Code);
+            ud.Property(d => d.Name);
         });
 
         builder.ToTable("Users");

@@ -12,7 +12,7 @@ public static class SwaggerConfiguration
             {
                 Title = "HelpDesk Users API",
                 Description = "Users API",
-                Contact = new OpenApiContact() { Name = "Paulo Junior", Email = "" },
+                Contact = new OpenApiContact() { Name = "Paulo Junior", Url = new Uri("https://github.com/pfjunior") },
                 License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
             });
         });

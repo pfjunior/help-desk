@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace HD.Identity.Api.Configuration;
+namespace HD.Tickets.Api.Configuration;
 
 public static class SwaggerConfiguration
 {
@@ -10,8 +10,8 @@ public static class SwaggerConfiguration
         {
             c.SwaggerDoc("v1", new OpenApiInfo()
             {
-                Title = "HelpDesk Identity API",
-                Description = "Identity API",
+                Title = "HelpDesk Tickets API",
+                Description = "Tickets API",
                 Contact = new OpenApiContact() { Name = "Paulo Junior", Url = new Uri("https://github.com/pfjunior") },
                 License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
             });

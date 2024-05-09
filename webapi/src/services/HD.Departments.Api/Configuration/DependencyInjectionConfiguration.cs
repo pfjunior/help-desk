@@ -10,10 +10,7 @@ public static class DependencyInjectionConfiguration
     {
         // Data
         builder.Services.AddScoped<DepartmentContext>();
-
-        // Repository
         builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-
 
         return builder;
     }

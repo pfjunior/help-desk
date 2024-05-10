@@ -7,9 +7,10 @@ namespace HD.Tickets.Domain.Interfaces;
 public interface ITicketRepository : IRepository<Ticket>
 {
     #region Ticket
-    Task<Ticket> GetById(Guid id);
-    Task<IEnumerable<Ticket>> GetAll();
-    Task<IEnumerable<Ticket>> Search(Expression<Func<User, bool>> predicate);
+    Task<Ticket> GetByIdAsync(Guid id);
+    Task<Ticket> GetTicketWithCommentsById(Guid id);
+    Task<IEnumerable<Ticket>> GetAllAsync();
+    Task<IEnumerable<Ticket>> SearchAsync(Expression<Func<Ticket, bool>> predicate);
 
     Task AddAsync(Ticket ticket);
     void Update(Ticket ticket);
@@ -17,8 +18,6 @@ public interface ITicketRepository : IRepository<Ticket>
     #endregion
 
     #region Comment
-    Task<IEnumerable<Comment>> GetCommentsByTicketId(Guid ticketId);
-
     Task AddCommentAsync(Comment comment);
     #endregion
 }

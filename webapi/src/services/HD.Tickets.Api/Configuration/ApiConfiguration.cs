@@ -1,4 +1,6 @@
-﻿using HD.WebApi.Core.Identitty;
+﻿using HD.Tickets.Infra.Data;
+using HD.WebApi.Core.Identitty;
+using Microsoft.EntityFrameworkCore;
 
 namespace HD.Tickets.Api.Configuration;
 
@@ -6,6 +8,7 @@ public static class ApiConfiguration
 {
     public static WebApplicationBuilder AddApiConfiguration(this WebApplicationBuilder builder)
     {
+        builder.Services.AddDbContext<TicketContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddCors(options => options.AddPolicy("Total", policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));

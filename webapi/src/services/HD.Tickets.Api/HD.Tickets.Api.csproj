@@ -18,6 +18,7 @@
     <ProjectReference Include="..\..\buildingBlocks\HD.Core\HD.Core.csproj" />
     <ProjectReference Include="..\..\buildingBlocks\HD.MessageBus\HD.MessageBus.csproj" />
     <ProjectReference Include="..\..\buildingBlocks\HD.WebApi.Core\HD.WebApi.Core.csproj" />
+    <ProjectReference Include="..\HD.Tickets.Infra\HD.Tickets.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>

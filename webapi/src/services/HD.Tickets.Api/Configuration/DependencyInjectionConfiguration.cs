@@ -1,4 +1,6 @@
-﻿using HD.WebApi.Core.User;
+﻿using HD.Core.Mediator;
+using HD.Tickets.Infra.Data;
+using HD.WebApi.Core.User;
 
 namespace HD.Tickets.Api.Configuration;
 
@@ -10,6 +12,11 @@ public static class DependencyInjectionConfiguration
         builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         builder.Services.AddScoped<IAspNetUser, AspNetUser>();
 
+        // Data
+        builder.Services.AddScoped<TicketContext>();
+
+        // Mediatr
+        builder.Services.AddScoped<IMediatorHandler, MediatorHandler>();
 
         return builder;
     }

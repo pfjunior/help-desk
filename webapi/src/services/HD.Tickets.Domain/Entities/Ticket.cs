@@ -5,7 +5,7 @@ namespace HD.Tickets.Domain.Entities;
 
 public class Ticket : Entity, IAggregateRoot
 {
-    public int Codigo { get; private set; }
+    public int TicketNumber { get; private set; }
     public string Subject { get; private set; }
     public string Description { get; private set; }
     public string? Solution { get; private set; }

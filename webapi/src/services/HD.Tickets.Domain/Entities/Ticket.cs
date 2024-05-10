@@ -11,7 +11,7 @@ public class Ticket : Entity, IAggregateRoot
     public string? Solution { get; private set; }
     public TicketType Type { get; private set; }
     public TicketStatus Status { get; private set; }
-    public TicketPriority Priority { get; private set; }
+    public TicketPriority? Priority { get; private set; }
     public DateTime StartDate { get; private set; }
     public DateTime? EndDate { get; private set; }
 
@@ -24,20 +24,26 @@ public class Ticket : Entity, IAggregateRoot
 
     protected Ticket() { }
 
-    public Ticket(Guid userId, string subject, string description, TicketType type, string userName, string email, string departmentName)
+    public Ticket(Guid userId, string subject, string description, TicketType type, string userName, string email, string department)
     {
         UserId = userId;
         Subject = subject;
         Description = description;
         Type = type;
         Status = TicketStatus.Pending;
-        User = new User { UserName = userName, Email = email, DepartmentName = departmentName };
+        User = new User { UserName = userName, Email = email, Department = department };
     }
 
-    public void Update(string subject, string description)
+    public void Edit(string subject, string description)
     {
         Subject = subject;
         Description = description;
+    }
+
+    public void Close(string solution)
+    {
+        Solution = solution;
+        EndDate = DateTime.Now;
     }
 
     public void SetType(TicketType type) => Type = type;

@@ -20,13 +20,13 @@ namespace HD.Tickets.Infra.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TicketNumber = table.Column<int>(type: "int", nullable: false),
+                    TicketNumber = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR TicketNumberSequence"),
                     Subject = table.Column<string>(type: "varchar(100)", nullable: false),
                     Description = table.Column<string>(type: "varchar(1000)", nullable: false),
                     Solution = table.Column<string>(type: "varchar(1000)", nullable: true),
                     Type = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    Priority = table.Column<int>(type: "int", nullable: false),
+                    Priority = table.Column<int>(type: "int", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -46,7 +46,7 @@ namespace HD.Tickets.Infra.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Description = table.Column<string>(type: "varchar(150)", nullable: false),
+                    Description = table.Column<string>(type: "varchar(1000)", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserName = table.Column<string>(type: "varchar(150)", nullable: false),
                     TicketId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)

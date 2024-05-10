@@ -1,21 +1,26 @@
 @HostAddress = http://localhost:5009
 @Path = /api/department
+@AccessJwt = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NWE2YjUzMS05Y2ZhLTQ3OTEtYjc3MS04MWFkYjEyM2U1OTkiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwianRpIjoiYjRhOGRiYTYtZGUzMy00MTcxLTk4ZjUtYjMzMTFkMTliMzZhIiwibmJmIjoxNzE0ODQ0NTM0LCJpYXQiOjE3MTQ4NDQ1MzQsImV4cCI6MTcxNDg1MTczNCwiaXNzIjoiSGVscERlc2siLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdCJ9.-j4qmGhlRJbKo7N4dNjL3GEeU9viWFz2TU1iLn_DaMs
 
 ### GetAll
 GET {{HostAddress}}{{Path}}/
 Accept: application/json
+Authorization: Bearer {{AccessJwt}}
 
 ### GetById
 GET {{HostAddress}}{{Path}}/e8a0b41f-b55a-4547-ae04-78135fdc1f92
 Accept: application/json
+Authorization: Bearer {{AccessJwt}}
 
 ### GetByCode
 GET {{HostAddress}}{{Path}}/it
 Accept: application/json
+Authorization: Bearer {{AccessJwt}}
 
 ### Create
 POST {{HostAddress}}{{Path}}/
 Content-Type: application/json
+Authorization: Bearer {{AccessJwt}}
 
 {
   "code": "hr",
@@ -25,6 +30,7 @@ Content-Type: application/json
 ### Update
 PUT {{HostAddress}}{{Path}}/e8a0b41f-b55a-4547-ae04-78135fdc1f92
 Content-Type: application/json
+Authorization: Bearer {{AccessJwt}}
 
 {
   "id": "e8a0b41f-b55a-4547-ae04-78135fdc1f92",
@@ -35,3 +41,4 @@ Content-Type: application/json
 ### Delete
 DELETE {{HostAddress}}{{Path}}/5042e951-64a4-49f2-80a2-81909e6c40dc
 Content-Type: application/json
+Authorization: Bearer {{AccessJwt}}

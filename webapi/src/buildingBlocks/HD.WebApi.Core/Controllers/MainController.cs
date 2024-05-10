@@ -10,7 +10,7 @@ public abstract class MainController : ControllerBase
 {
     protected ICollection<string> Errors = new List<string>();
 
-    protected ActionResult CustomResponse(HttpStatusCode? statusCode = HttpStatusCode.OK, object? result = null)
+    protected ActionResult CustomResponse(object? result = null, HttpStatusCode? statusCode = HttpStatusCode.OK)
     {
         return ValidOperation()
             ? new ObjectResult(result) { StatusCode = Convert.ToInt32(statusCode) }

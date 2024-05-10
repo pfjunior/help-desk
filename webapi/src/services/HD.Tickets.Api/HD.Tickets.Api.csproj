@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,22 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
+    <PackageReference Include="Mediatr" Version="12.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />    
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />    
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup>    
     <ProjectReference Include="..\..\buildingBlocks\HD.Core\HD.Core.csproj" />
     <ProjectReference Include="..\..\buildingBlocks\HD.MessageBus\HD.MessageBus.csproj" />
     <ProjectReference Include="..\..\buildingBlocks\HD.WebApi.Core\HD.WebApi.Core.csproj" />
+    <ProjectReference Include="..\HD.Tickets.Domain\HD.Tickets.Domain.csproj" />
     <ProjectReference Include="..\HD.Tickets.Infra\HD.Tickets.Infra.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

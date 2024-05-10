@@ -1,6 +1,23 @@
-@HD.Tickets.Api_HostAddress = http://localhost:5141
+@HostAddress = http://localhost:5141
+@Path = /api/ticket
+@AccessJwt = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjoiVXNlciIsInN1YiI6IjU1YTZiNTMxLTljZmEtNDc5MS1iNzcxLTgxYWRiMTIzZTU5OSIsImVtYWlsIjoidXNlckBlbWFpbC5jb20iLCJqdGkiOiIzZWIxYmY0Mi1hNGJlLTQ0NzEtYmVhZC0wYTg4MjhhMDAwOWIiLCJuYmYiOjE3MTUzNjM5MjksImlhdCI6MTcxNTM2MzkyOSwiZXhwIjoxNzE1MzcxMTI5LCJpc3MiOiJIZWxwRGVzayIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0In0.l72r5njRQJbZxqAToyaNNeMpb3GczT5X9BhJLe2YnWo
 
-GET {{HD.Tickets.Api_HostAddress}}/weatherforecast/
+### GetAll
+GET {{HostAddress}}{{Path}}/
 Accept: application/json
+Authorization: Bearer {{AccessJwt}}
 
-###
+
+### Create
+POST {{HostAddress}}{{Path}}/
+Content-Type: application/json
+Authorization: Bearer {{AccessJwt}}
+
+{
+  "subject": "Printer",
+  "description": "Printer not working ",
+  "type": 2,
+  "userName": "Mary Jane",
+  "email": "user@email.com",
+  "department": "Human Resources"
+}

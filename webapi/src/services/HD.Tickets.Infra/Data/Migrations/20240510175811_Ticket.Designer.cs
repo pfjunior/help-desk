@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HD.Tickets.Infra.Data.Migrations
 {
     [DbContext(typeof(TicketContext))]
-    [Migration("20240510123927_Ticket")]
+    [Migration("20240510175811_Ticket")]
     partial class Ticket
     {
         /// <inheritdoc />
@@ -36,7 +36,7 @@ namespace HD.Tickets.Infra.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<Guid>("TicketId")
                         .HasColumnType("uniqueidentifier");
@@ -52,7 +52,7 @@ namespace HD.Tickets.Infra.Data.Migrations
 
                     b.HasIndex("TicketId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("HD.Tickets.Domain.Entities.Ticket", b =>
@@ -71,7 +71,7 @@ namespace HD.Tickets.Infra.Data.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Priority")
+                    b.Property<int?>("Priority")
                         .HasColumnType("int");
 
                     b.Property<string>("Solution")
@@ -88,7 +88,9 @@ namespace HD.Tickets.Infra.Data.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<int>("TicketNumber")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValueSql("NEXT VALUE FOR TicketNumberSequence");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
@@ -122,7 +124,7 @@ namespace HD.Tickets.Infra.Data.Migrations
                             b1.Property<Guid>("TicketId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<string>("DepartmentName")
+                            b1.Property<string>("Department")
                                 .IsRequired()
                                 .HasColumnType("varchar(150)")
                                 .HasColumnName("Department");

@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -37,13 +36,15 @@ public class AuthenticateController : MainController
 
     [AllowAnonymous]
     [HttpPost("authenticate")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Authenticate(UserLoginViewModel user)
     {
         if (!ModelState.IsValid) return CustomResponse(ModelState);
 
         var result = await _signInManager.PasswordSignInAsync(user.Email, user.Password, false, true);
 
-        if (result.Succeeded) return CustomResponse(null, await GenerateJwt(user.Email));
+        if (result.Succeeded) return CustomResponse(await GenerateJwt(user.Email));
 
         if (result.IsLockedOut)
         {
@@ -58,6 +59,8 @@ public class AuthenticateController : MainController
     [ClaimsAuthorize("Adminstrator", "Admin")]
     [ClaimsAuthorize("Support", "Support")]
     [HttpPost("new-account")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Register(UserRegisterViewModel user)
     {
         if (!ModelState.IsValid) return CustomResponse(ModelState);
@@ -80,7 +83,7 @@ public class AuthenticateController : MainController
                 await _userManager.DeleteAsync(newUser);
                 return CustomResponse(userRegisterResult.ValidationResult);
             }
-            return CustomResponse(HttpStatusCode.OK, await GenerateJwt(user.Email));
+            return CustomResponse(await GenerateJwt(user.Email));
         }
 
         foreach (var error in result.Errors) AddProcessingError(error.Description);

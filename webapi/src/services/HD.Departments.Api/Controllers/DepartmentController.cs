@@ -2,12 +2,13 @@
 using HD.Departments.Api.Domain.Interfaces;
 using HD.Departments.Api.Dtos;
 using HD.WebApi.Core.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace HD.Departments.Api.Controllers;
 
-//[Authorize]
+[Authorize]
 [Route("api/department")]
 public class DepartmentController : MainController
 {
@@ -21,7 +22,7 @@ public class DepartmentController : MainController
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetAll()
     {
-        return CustomResponse(HttpStatusCode.OK, await GetDepartmentsAsync());
+        return CustomResponse(await GetDepartmentsAsync());
     }
 
     [HttpGet("{id:Guid}")]
@@ -34,7 +35,7 @@ public class DepartmentController : MainController
 
         if (department == null) return NotFound();
 
-        return CustomResponse(HttpStatusCode.OK, department);
+        return CustomResponse(department);
     }
 
     [HttpGet("{code}")]
@@ -47,7 +48,7 @@ public class DepartmentController : MainController
 
         if (department == null) return NotFound();
 
-        return CustomResponse(HttpStatusCode.OK, department);
+        return CustomResponse(department);
     }
 
     [HttpPost]
@@ -59,7 +60,7 @@ public class DepartmentController : MainController
 
         await _repository.AddAsync(new Department(departmentDto.Code, departmentDto.Name));
 
-        return CustomResponse(HttpStatusCode.Created, departmentDto);
+        return CustomResponse(departmentDto, HttpStatusCode.Created);
     }
 
     [HttpPut("{id:Guid}")]

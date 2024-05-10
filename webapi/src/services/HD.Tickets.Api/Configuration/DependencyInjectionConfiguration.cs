@@ -1,5 +1,7 @@
 ﻿using HD.Core.Mediator;
+using HD.Tickets.Domain.Interfaces;
 using HD.Tickets.Infra.Data;
+using HD.Tickets.Infra.Data.Repository;
 using HD.WebApi.Core.User;
 
 namespace HD.Tickets.Api.Configuration;
@@ -14,9 +16,11 @@ public static class DependencyInjectionConfiguration
 
         // Data
         builder.Services.AddScoped<TicketContext>();
+        builder.Services.AddScoped<ITicketRepository, TicketRepository>();
 
-        // Mediatr
+        // Application
         builder.Services.AddScoped<IMediatorHandler, MediatorHandler>();
+
 
         return builder;
     }

@@ -3,7 +3,6 @@ using HD.WebApi.Core.Controllers;
 using HD.WebApi.Core.Identitty;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace HD.Users.Api.Controllers;
 
@@ -22,8 +21,10 @@ public class UserController : MainController
     [ClaimsAuthorize("Adminstrator", "Admin")]
     [ClaimsAuthorize("Support", "Support")]
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetAll()
     {
-        return CustomResponse(HttpStatusCode.OK, await _repository.GetAll());
+        return CustomResponse(await _repository.GetAll());
     }
 }

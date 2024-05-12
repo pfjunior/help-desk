@@ -1,0 +1,7 @@
+{
+  "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+  "sonarlint.connectedMode.project": {
+    "connectionId": "vscode-sonarlint",
+    "projectKey": "pfjunior_help-desk"
+  }
+}

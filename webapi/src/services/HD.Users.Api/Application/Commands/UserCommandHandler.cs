@@ -19,7 +19,8 @@ public class UserCommandHandler : CommandHandler, IRequestHandler<UserRegisterCo
         if (!message.IsValid()) return message.ValidationResult;
 
         var newUser = new User(message.Id, message.FirstName, message.LastName, message.Email, message.DepartmentCode, message.DepartmentName);
-        newUser.SetPhoneNumber(message.PhoneNumber, message.Extension);
+        if (message.PhoneNumber is not null && message.Extension is not null)
+            newUser.SetPhoneNumber(message.PhoneNumber, message.Extension);
 
         var existedUser = await _repository.Search(e => e.Email.Address == message.Email);
 
@@ -34,6 +35,5 @@ public class UserCommandHandler : CommandHandler, IRequestHandler<UserRegisterCo
         newUser.AddEvent(new UserRegistredEvent(message.Id, message.FirstName, message.LastName, message.Email, message.DepartmentCode, message.DepartmentName));
 
         return await PersistData(_repository.UnitOfWork);
-
     }
 }

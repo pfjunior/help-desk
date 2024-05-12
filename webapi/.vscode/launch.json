@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "HD.Identity.Api",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/src/services/HD.Identity.Api/HD.Identity.Api.csproj"
+    },
+    {
+      "name": "HD.Users.Api",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/src/services/HD.Users.Api/HD.Users.Api.csproj"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "HelpDesk APIs",
+      "configurations": ["HD.Identity.Api", "HD.Users.Api"],
+      "stopAll": true
+    }
+  ]
+}

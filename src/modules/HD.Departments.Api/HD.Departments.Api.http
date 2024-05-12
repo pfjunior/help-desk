@@ -1,6 +1,0 @@
-@HD.Departments.Api_HostAddress = http://localhost:5009
-
-GET {{HD.Departments.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -1,0 +1,8 @@
+@HostAddress = http://localhost:5229
+@Path = /api/user
+@AccessJwt = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NWE2YjUzMS05Y2ZhLTQ3OTEtYjc3MS04MWFkYjEyM2U1OTkiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwianRpIjoiYjRhOGRiYTYtZGUzMy00MTcxLTk4ZjUtYjMzMTFkMTliMzZhIiwibmJmIjoxNzE0ODQ0NTM0LCJpYXQiOjE3MTQ4NDQ1MzQsImV4cCI6MTcxNDg1MTczNCwiaXNzIjoiSGVscERlc2siLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdCJ9.-j4qmGhlRJbKo7N4dNjL3GEeU9viWFz2TU1iLn_DaMs
+
+### GetAll
+GET {{HostAddress}}{{Path}}/
+Accept: application/json
+Authorization: Bearer {{AccessJwt}}

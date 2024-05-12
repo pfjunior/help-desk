@@ -1,6 +1,0 @@
-@HD.Employees.Api_HostAddress = http://localhost:5003
-
-GET {{HD.Employees.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

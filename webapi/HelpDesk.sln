@@ -44,9 +44,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageBus", "MessageBus", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HD.MessageBus", "src\buildingBlocks\HD.MessageBus\HD.MessageBus.csproj", "{A0678C8D-714C-4B6A-BE6F-125D8CC0EF5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD.Tickets.Domain", "src\services\HD.Tickets.Domain\HD.Tickets.Domain.csproj", "{C3F4B8F3-1612-4C0B-B50C-2EE7BFB7474B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HD.Tickets.Domain", "src\services\HD.Tickets.Domain\HD.Tickets.Domain.csproj", "{C3F4B8F3-1612-4C0B-B50C-2EE7BFB7474B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD.Tickets.Infra", "src\services\HD.Tickets.Infra\HD.Tickets.Infra.csproj", "{23B7D55C-0972-4E41-97B0-B687DD21D388}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HD.Tickets.Infra", "src\services\HD.Tickets.Infra\HD.Tickets.Infra.csproj", "{23B7D55C-0972-4E41-97B0-B687DD21D388}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{F508D0A3-3D62-4D69-BFA9-EC783DED448A}"
+	ProjectSection(SolutionItems) = preProject
+		database\Script.sql = database\Script.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

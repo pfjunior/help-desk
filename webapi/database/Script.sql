@@ -34,5 +34,5 @@ INSERT INTO Users (Id, FirstName, LastName, Email, PhoneNumber, Extension, Activ
 VALUES(@userUserId, 'Mary', 'Jane', 'user@email.com', null, null, 1, GETDATE(), null, 'FIN', 'Finance');
 
 -- AspNetUserClaims
-INSERT INTO AspNetUserClaims (UserId, ClaimType, ClaimValue) VALUES(@adminUserId, 'Adminstrator', 'Admin');
+INSERT INTO AspNetUserClaims (UserId, ClaimType, ClaimValue) VALUES(@adminUserId, 'Administrator', 'Admin');
 INSERT INTO AspNetUserClaims (UserId, ClaimType, ClaimValue) VALUES(@supportUserId, 'Support', 'Support');

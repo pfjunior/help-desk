@@ -56,7 +56,7 @@ public class AuthenticateController : MainController
         return CustomResponse();
     }
 
-    [ClaimsAuthorize("Adminstrator", "Admin")]
+    [ClaimsAuthorize("Administrator", "Admin")]
     [ClaimsAuthorize("Support", "Support")]
     [HttpPost("new-account")]
     [ProducesResponseType(StatusCodes.Status200OK)]

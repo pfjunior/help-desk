@@ -9,6 +9,7 @@ public interface IAspNetUser
     Guid GetUserId();
     string GetUserEmail();
     string GetUserToken();
+    string GetUserRefreshToken();
     bool IsAutenticate();
     bool HasRole(string role);
     IEnumerable<Claim> GetClaims();
@@ -30,6 +31,7 @@ public class AspNetUser : IAspNetUser
     public string GetUserEmail() => IsAutenticate() ? _accessor.HttpContext.User.GetUserEmail() : "";
 
     public string GetUserToken() => IsAutenticate() ? _accessor.HttpContext.User.GetUserToken() : "";
+    public string GetUserRefreshToken() => IsAutenticate() ? _accessor.HttpContext.User.GetUserRefreshToken() : "";
 
     public bool IsAutenticate() => _accessor.HttpContext.User.Identity.IsAuthenticated;
 

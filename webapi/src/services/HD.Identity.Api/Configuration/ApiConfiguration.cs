@@ -23,6 +23,7 @@ public static class ApiConfiguration
         app.UseHttpsRedirection();
         app.UseRouting();
         app.UseAuthConfiguration();
+        app.UseJwksDiscovery();
 
         return app;
     }
